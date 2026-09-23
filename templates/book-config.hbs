@@ -1,0 +1,65 @@
+<div>
+    <fieldset>
+        <div class="form-group">
+            <label>{{localize "mastercrafted.recipeApp.editcreatebook.name"}}</label>
+            <div class="form-fields">
+                <input type="text" name="name" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.namep"}}" value="{{book.name}}" autofocus="">
+            </div>
+        </div>
+
+        <div class="form-group">
+                <label for="texture.src">{{localize "mastercrafted.recipeApp.editcreatebook.image"}}</label>
+                <div class="form-fields">
+                    <file-picker type="image" name="img" value="{{book.img}}"></file-picker>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="sound">{{localize "mastercrafted.recipeApp.editcreatebook.sound"}}</label>
+            <div class="form-fields">
+                <file-picker type="audio" name="sound" value="{{book.sound}}"></file-picker>
+            </div>
+        </div>
+
+        <div class="form-group">
+                <label>{{localize "mastercrafted.recipeApp.editcreatebook.tools"}}</label>
+                <div class="form-fields">
+                    <input type="text" name="require" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.toolsplaceholder"}}" value="{{book.require}}">
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label>{{localize "mastercrafted.recipeApp.recipeconfig.ingredientsInspection"}}</label>
+            <div class="form-fields">
+                <select name="ingredientsInspection">
+                    {{selectOptions perm selected=book.ingredientsInspection localize=true}}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>{{localize "mastercrafted.recipeApp.recipeconfig.productInspection"}}</label>
+            <div class="form-fields">
+                <select name="productInspection">
+                    {{selectOptions perm selected=book.productInspection localize=true}}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>{{localize "mastercrafted.recipeApp.editcreatebook.time"}}</label>
+            <div class="form-fields">
+                <input type="number" name="time" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.timeplaceholder"}}" value="{{book.time}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>{{localize "mastercrafted.recipeApp.editcreatebook.description"}}</label>
+            <div class="form-fields">
+                <textarea type="text" name="description">{{description}}</textarea>
+            </div>
+        </div>
+    </fieldset>
+    
+    <button type="submit"><i class="fas fa-check"></i> {{localize "mastercrafted.recipeApp.editcreatebook.confirm"}}</button>
+</div>

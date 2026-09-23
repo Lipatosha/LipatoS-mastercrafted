@@ -1,0 +1,45 @@
+<div>
+
+    <header class="journal-page-header flexrow">
+        <button style="{{#unless craftMode}}pointer-events: none;{{/unless}}" class="create" type="button" data-action="craft" data-tooltip="{{localize "mastercrafted.recipeApp.craft"}}">
+            <img src="{{recipe.img}}" alt="">
+            {{#if craftMode}}
+                <span class="max-craftable-products {{#if maxCraftableProducts}}craftable{{/if}}">{{maxCraftableProducts}}</span>
+                <i class="fas fa-hammer" style="pointer-events: none;"></i>
+            {{/if}}
+        </button>
+        {{#if title.show}}<h{{ title.level }}>{{ name }}</h{{ title.level }}>{{/if}}
+    </header>
+
+    <div class="flexrow craft-as">
+        <div class="flexrow">
+            <label for="actors">{{localize "mastercrafted.recipeApp.craftAs"}}
+                <i class="fas fa-info-circle" data-tooltip="{{localize "mastercrafted.recipeApp.craftAsInfo"}}"></i>
+            </label>
+            <select name="actors">
+                {{selectOptions actors selected=actor selectedNameAttr="name"}}
+            </select>
+        </div>
+
+        <div class="flexrow">
+            <label for="inventoryActors">{{localize "mastercrafted.recipeApp.useInventory"}}
+                <i class="fas fa-info-circle" data-tooltip="{{localize "mastercrafted.recipeApp.useInventoryInfo"}}"></i>
+            </label>
+            <select name="inventoryActors">
+                {{selectOptions inventoryActors selected=inventoryActor selectedNameAttr="name"}}
+            </select>
+        </div>
+
+        {{#if isOwner}}
+        <div class="flexrow edit-mode-check">
+            <label for="editMode">{{localize "mastercrafted.recipeApp.editMode"}}</label>
+            <input type="checkbox" name="editMode" id="editMode" {{checked editMode}}>
+        </div>
+        {{/if}}
+    </div>
+
+    <section class="journal-page-content">
+        {{{ text.enriched }}}
+    </section>
+
+</div>

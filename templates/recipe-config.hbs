@@ -1,0 +1,106 @@
+<div class="mastercrafted-recipe-config">
+    
+    <fieldset>
+        <div class="form-group">
+                <label for="texture.src">{{localize "mastercrafted.recipeApp.editcreatebook.image"}}</label>
+                <div class="form-fields">
+                    <file-picker type="image" name="img" value="{{recipe.img}}" data-target="img" data-type="image"></file-picker>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="sound">{{localize "mastercrafted.recipeApp.editcreatebook.sound"}}</label>
+            <div class="form-fields">
+                <file-picker type="audio" name="sound" value="{{recipe.sound}}" data-target="sound" data-type="audio"></file-picker>
+            </div>
+        </div>
+
+        <div class="form-group">
+                <label>{{localize "mastercrafted.recipeApp.editcreatebook.tools"}}</label>
+                <div class="form-fields">
+                    <input type="text" name="require" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.toolsplaceholder"}}" value="{{recipe.require}}">
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label>{{localize "mastercrafted.recipeApp.recipeconfig.ingredientsInspection"}}</label>
+            <div class="form-fields">
+                <select name="ingredientsInspection">
+                    {{selectOptions perm selected=recipe.ingredientsInspection localize=true}}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>{{localize "mastercrafted.recipeApp.recipeconfig.productInspection"}}</label>
+            <div class="form-fields">
+                <select name="productInspection">
+                    {{selectOptions perm selected=recipe.productInspection localize=true}}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>{{localize "mastercrafted.recipeApp.editcreatebook.macro"}}</label>
+            <div class="form-fields">
+                <input type="text" name="macroName" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.macroplaceholder"}}" value="{{recipe.macroName}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>{{localize "mastercrafted.recipeApp.editcreatebook.time"}}</label>
+            <div class="form-fields">
+                <input type="number" name="time" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.timeplaceholder"}}" value="{{recipe.time}}">
+            </div>
+        </div>
+        {{!-- <div class="form-group">
+            <label for="expression">{{localize "mastercrafted.recipeApp.editcreatebook.expression.label"}}</label>
+            <div class="form-fields">
+                <input type="text" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.expression.placeholder"}}"
+                    value="{{expression}}" name="expression">
+            </div>
+        </div> --}}
+        {{#if systemData}}
+        <div class="form-group">
+            <label for="abilityCheck">{{localize "mastercrafted.recipeApp.editcreatebook.abilityCheck.label"}}</label>
+            <div class="form-fields">
+                <select name="abilityCheck">
+                    {{selectOptions systemSelect selected=abilityCheck}}
+                </select>
+                <label for="abilityDc">{{localize "mastercrafted.recipeApp.editcreatebook.abilityDc.label"}}</label>
+                <input type="number" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.abilityDc.placeholder"}}" value="{{abilityDc}}"
+                    step="1" name="abilityDc">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="toolCheck">{{localize "mastercrafted.recipeApp.editcreatebook.toolCheck.label"}}</label>
+            <div class="form-fields">
+                <select name="toolCheck">
+                    {{selectOptions tools selected=toolCheck localize=true}}
+                </select>
+                <label for="toolDc">{{localize "mastercrafted.recipeApp.editcreatebook.toolDc.label"}}</label>
+                <input type="number" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.toolDc.placeholder"}}" value="{{toolDc}}"
+                    step="1" name="toolDc">
+            </div>
+        </div>
+        {{/if}}
+    </fieldset>
+
+    <fieldset>
+        <legend class="flexrow"><button type="button" class="add-entry"><i class="fas fa-plus"></i> {{localize "mastercrafted.recipeApp.editcreatebook.modifierList.add"}}</button></legend>
+        <p class="hint">{{localize "mastercrafted.recipeApp.editcreatebook.modifierList.hint"}}</p>
+        {{#each modifierList}}
+            <div class="form-group">
+                <label>{{localize "mastercrafted.recipeApp.editcreatebook.modifierList.label"}}</label>
+                <div class="form-fields" data-index="{{@index}}">
+                    <input type="text" name="flags.mastercrafted.modifierList.{{@index}}.modifier" value="{{this.modifier}}" />
+                    <label>{{localize "mastercrafted.recipeApp.editcreatebook.toolDc.label"}}</label>
+                    <input type="number" placeholder="{{localize "mastercrafted.recipeApp.editcreatebook.toolDc.placeholder"}}" value="{{this.DC}}"
+                        step="1" name="flags.mastercrafted.modifierList.{{@index}}.DC">
+
+                    <button type="button" class="remove-entry icon fas fa-trash" data-index="{{@index}}"></button>
+                </div>
+            </div>
+        {{/each}}
+    </fieldset>
+{{!-- 
+    <button type="submit"><i class="fas fa-check"></i> {{localize "mastercrafted.recipeApp.editcreatebook.confirm"}}</button> --}}
+</div>

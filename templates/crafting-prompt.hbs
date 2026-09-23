@@ -1,0 +1,14 @@
+<div id="mastercrafted-confirm-craft">
+    <h4 class="divider">{{localize "mastercrafted.craftDialog.consumes"}}</h4>
+    <div>
+        {{#each componentsToConsume}}
+                <span>{{this.documentLink}}</span>
+        {{/each}}
+    </div>
+    <h4 class="divider">{{localize "mastercrafted.craftDialog.crafts"}}</h4>
+    <div>
+        {{#each product.components}}
+                <span>{{this.documentLink}}</span>
+        {{/each}}
+    </div>
+</div>

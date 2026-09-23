@@ -1,0 +1,21 @@
+<div>
+    <li class="directory-item entry document journalentry flexcol recipe-book" data-book-id="{{ uuid }}" data-entry-id="{{ id }}">
+        <div class="flexrow" data-action="activateEntry">
+            {{#if flags.mastercrafted.img}}
+            <img class="thumbnail" src="{{ flags.mastercrafted.img }}" alt="{{ name }}" loading="lazy">
+            {{/if}}
+            <a class="entry-name ellipsis">{{ name }}</a>
+        </div>
+    </li>
+
+    {{#if searchedPages}}
+    <ol class="directory-list plain">
+        {{#each searchedPages}}
+            <li class="directory-item entry document journalentry flexrow" data-action="activateEntry" data-book-id="{{ ../uuid }}" data-page-id="{{ this.id }}">
+                <img class="thumbnail searched-page {{#unless flags.mastercrafted.img}} hidden {{/unless}}" src="{{ flags.mastercrafted.img }}" alt="{{ name }}" loading="lazy">
+                <a style="padding-left: 0.5rem" class="entry-name ellipsis">{{ this.name }}</a>
+            </li>
+        {{/each}}
+    </ol>
+    {{/if}}
+</div>

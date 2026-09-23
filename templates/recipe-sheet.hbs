@@ -1,0 +1,57 @@
+<div class="mastercrafted-recipe" data-recipe-id="{{recipe.id}}">
+    <header class="mastercrafted-recipe-header">
+        {{#if recipe._hasTools}}
+        <span>{{localize "mastercrafted.recipeApp.tools"}}: {{#each recipe._tools}} <span class="tool">{{this}}</span> {{/each}}</span>
+        {{/if}}
+        {{#if recipe.time}}
+        <span>{{localize "mastercrafted.recipeApp.time"}}: <span class="tool">{{recipe.time}} {{localize "mastercrafted.recipeApp.minutes"}}</span></span>
+        {{/if}}
+    </header>
+    <h3 class="divider" {{#if craftMode}} data-tooltip="{{localize "mastercrafted.recipeApp.ingredientsTooltip"}}"{{/if}}>
+        {{localize "mastercrafted.recipeApp.recipeconfig.ingredients"}}
+        {{#if editMode}}<i class="fas fa-info-circle" data-tooltip="{{localize "mastercrafted.recipeApp.ingredientsEditInfo"}}"></i>{{/if}}
+    </h3>
+    <div class="mastercrafted-ingredients">
+        {{#each recipe.ingredients}}
+            <div class="mastercrafted-ingredient" data-ingredient-id="{{this.id}}">
+                {{#each components}}
+                    <div class="mastercrafted-component component-img" data-component-id="{{this.id}}" data-uuid="{{this.uuid}}" data-tooltip="{{this.name}} (x{{this.quantity}})" style="background-image: url('{{this.img}}');">
+                        {{#if ../../craftMode}}<span class="required-quantity">{{this.quantity}}</span>{{/if}}
+                        {{#if ../../editMode}}<input type="number" name="quantity" class="mastercrafted-component-amount" value="{{this.quantity}}">{{/if}}
+                        {{#if ../../craftMode}}<span class="inventory-quantity {{#if this.resourcePath}}is-resource{{/if}}">{{this.inventoryQuantity}}</span>{{/if}}
+                    </div>
+                {{/each}}
+                {{#if ../editMode}}
+                    <button type="button" class="icon fas fa-plus" data-action="add-component"></button>
+                {{/if}}
+            </div>
+        {{/each}}
+        {{#unless craftMode}}
+        <div class="mastercrafted-ingredient">
+            <span class="empty-ingredient">+</span>
+        </div>
+        {{/unless}}
+    </div>
+    <h3 class="divider" {{#if craftMode}} data-tooltip="{{localize "mastercrafted.recipeApp.resultTooltip"}}"{{/if}}>
+        {{localize "mastercrafted.recipeApp.recipeconfig.result"}}
+        {{#if editMode}}<i class="fas fa-info-circle" data-tooltip="{{localize "mastercrafted.recipeApp.resultEditInfo"}}"></i>{{/if}}
+    </h3>
+    <div class="mastercrafted-results">
+        {{#each recipe.products}}
+        <div class="mastercrafted-result" data-result-id="{{this.id}}">
+            {{#each components}}
+            <div class="mastercrafted-component component-img" data-component-id="{{this.id}}" data-uuid="{{this.uuid}}"
+                data-tooltip="{{this.name}}" style="background-image: url('{{this.img}}');">
+                {{#if ../../craftMode}}<span class="required-quantity">{{this.quantity}}</span>{{/if}}
+                {{#if ../../editMode}}<input type="number" name="quantity" class="mastercrafted-component-amount" value="{{this.quantity}}">{{/if}}
+            </div>
+            {{/each}}
+        </div>
+        {{/each}}
+        {{#unless craftMode}}
+        <div class="mastercrafted-result">
+            <span class="empty-result">+</span>
+        </div>
+        {{/unless}}
+    </div>
+</div>

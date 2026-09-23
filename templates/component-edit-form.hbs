@@ -1,0 +1,43 @@
+<div>
+    <div class="form-group">
+        <label for="name">{{localize "mastercrafted.componentEditForm.name.label"}}</label>
+        <input type="text" name="name" value="{{component.name}}">
+        <p class="hint">{{localize "mastercrafted.componentEditForm.name.hint"}}</p>
+    </div>
+    <div class="form-group">
+        <label for="img">{{localize "mastercrafted.componentEditForm.img"}}</label>
+        <file-picker type="image" name="img" value="{{component.img}}"></file-picker>
+    </div>
+    <div class="form-group">
+        <label for="quantity">{{localize "mastercrafted.componentEditForm.quantity"}}</label>
+        <input type="number" name="quantity" value="{{component.quantity}}">
+    </div>
+    <div class="form-group">
+        <label for="uuid">{{localize "mastercrafted.componentEditForm.uuid.label"}}</label>
+        <document-tags single type="Item" name="uuid" value="{{component.uuid}}"></document-tags>
+        <p class="hint">{{localize "mastercrafted.componentEditForm.uuid.hint"}}</p>
+    </div>
+    <fieldset>
+        <legend>{{localize "mastercrafted.componentEditForm.resourcePath.title"}}</legend>
+        <p class="hint">{{localize "mastercrafted.componentEditForm.resourcePath.hint"}}</p>
+        <div class="form-group">
+            <label for="resourcePath">{{localize "mastercrafted.componentEditForm.resourcePath.label"}}</label>
+            <input type="text" name="resourcePath" value="{{component.resourcePath}}">
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>{{localize "mastercrafted.componentEditForm.tags.title"}}</legend>
+        <p class="hint">{{localize "mastercrafted.componentEditForm.tags.hint"}}</p>
+        <div class="form-group">
+            <label for="tags">{{localize "mastercrafted.componentEditForm.tags.label"}}</label>
+            <string-tags name="tags" value="{{component.tags}}"></string-tags>
+        </div>
+        <div class="form-group">
+            <label for="mode">{{localize "mastercrafted.componentEditForm.tags.mode.label"}}</label>
+            <select name="mode">
+                <option value="some" {{#if (eq component.mode "some")}} selected {{/if}}>{{localize "mastercrafted.componentEditForm.tags.mode.some"}}</option>
+                <option value="every" {{#if (eq component.mode "every")}} selected {{/if}}>{{localize "mastercrafted.componentEditForm.tags.mode.every"}}</option>
+            </select>
+        </div>
+    </fieldset>
+</div>
