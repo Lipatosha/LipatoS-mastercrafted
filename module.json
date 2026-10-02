@@ -1,8 +1,8 @@
 {
   "title": "LipatoS - Mastercrafted",
-  "description": "Менеджер крафта для Foundry VTT 14: книги рецептов, ингредиенты, продукты, проверки, котёл и создание предметов. Сборка LipatoS с исправлением просмотра игроками.",
-  "id": "mastercrafted",
-  "version": "6.0.2-player-inspection-fix",
+  "description": "Менеджер крафта для Foundry VTT 14: книги рецептов, ингредиенты, продукты, проверки, котёл и создание предметов. Сборка LipatoS с исправлением просмотра игроками и отдельным внутренним ID.",
+  "id": "lipatos-mastercrafted",
+  "version": "6.0.3-lipatos.1",
   "authors": [
     {
       "name": "LipatoS"
@@ -38,7 +38,7 @@
   ],
   "packs": [],
   "url": "https://github.com/Lipatosha/LipatoS-mastercrafted",
-  "manifest": "https://raw.githubusercontent.com/Lipatosha/LipatoS-mastercrafted/main/module.json",
+  "manifest": "https://github.com/Lipatosha/LipatoS-mastercrafted/releases/latest/download/module.json",
   "relationships": {},
   "compatibility": {
     "minimum": "14",
@@ -46,7 +46,7 @@
     "maximum": "14"
   },
   "protected": false,
-  "download": "https://raw.githubusercontent.com/Lipatosha/LipatoS-mastercrafted/main/lipatos-mastercrafted-v6.0.2-player-inspection-fix.zip",
+  "download": "https://github.com/Lipatosha/LipatoS-mastercrafted/releases/latest/download/lipatos-mastercrafted.zip",
   "readme": "https://github.com/Lipatosha/LipatoS-mastercrafted/blob/main/README.md",
   "bugs": "https://github.com/Lipatosha/LipatoS-mastercrafted/issues"
 }
