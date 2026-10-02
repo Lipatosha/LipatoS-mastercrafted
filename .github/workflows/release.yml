@@ -1,0 +1,54 @@
+name: Build LipatoS Mastercrafted
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - module.json
+      - index.js
+      - scripts/**
+      - languages/**
+      - styles/**
+      - README.md
+      - CHANGELOG.md
+      - .github/workflows/release.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build isolated package
+        shell: bash
+        run: |
+          rm -rf build lipatos-mastercrafted.zip
+          unzip -q lipatos-mastercrafted-v6.0.2-player-inspection-fix.zip -d build
+          cp module.json index.js build/
+          rm -rf build/styles build/languages
+          cp -R styles languages build/
+          find build -type f \( -name '*.js' -o -name '*.hbs' -o -name '*.json' -o -name '*.css' \) -print0 \
+            | xargs -0 sed -i 's#modules/mastercrafted/#modules/lipatos-mastercrafted/#g'
+          node --check build/index.js
+          node -e 'const m=require("./build/module.json"); if(m.id!=="lipatos-mastercrafted" || m.protected!==false || !m.download) process.exit(1)'
+          (cd build && zip -q -r ../lipatos-mastercrafted.zip .)
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          VERSION=$(node -p 'require("./module.json").version')
+          TAG="v$VERSION"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" lipatos-mastercrafted.zip module.json --clobber
+          else
+            gh release create "$TAG" lipatos-mastercrafted.zip module.json \
+              --target "$GITHUB_SHA" \
+              --title "LipatoS — Mastercrafted $TAG" \
+              --notes "Отдельный пакет LipatoS с уникальным внутренним ID lipatos-mastercrafted для исключения конфликта с защищённым пакетом Foundry."
+          fi
