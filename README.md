@@ -4,7 +4,7 @@
 
 ## Версия
 
-**6.0.2-player-inspection-fix**
+**6.0.3-lipatos.1**
 
 ## Совместимость
 
@@ -31,11 +31,17 @@
 
 Оригинальный Mastercrafted и эту сборку одновременно устанавливать не нужно.
 
+## Внутренний ID
+
+Пакет LipatoS использует собственный ID `lipatos-mastercrafted`. Это сделано специально: оригинальный ID зарегистрирован в каталоге Foundry как защищённый пакет, из-за чего Foundry пыталась запрашивать авторизацию даже для нашей GitHub-сборки.
+
+Старые флаги и данные журналов сохранены в прежних пространствах имён для совместимости мира.
+
 ## Установка
 
 В Foundry VTT откройте **Add-on Modules → Install Module** и вставьте:
 
-`https://raw.githubusercontent.com/Lipatosha/LipatoS-mastercrafted/main/module.json`
+`https://github.com/Lipatosha/LipatoS-mastercrafted/releases/latest/download/module.json`
 
 ## Автор сборки
 
